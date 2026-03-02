@@ -21,7 +21,7 @@ export function TopNav() {
 
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-gray-100">
-      <div className="max-w-[470px] mx-auto flex items-center justify-between px-4 h-12">
+      <div className="flex items-center justify-between px-4 h-12">
         {showSearch ? (
           <>
             <div className="flex-1 flex items-center gap-2">
