@@ -51,16 +51,6 @@ const volunteers: Volunteer[] = [
   },
   {
     id: 'v4',
-    name: 'Taylor',
-    emoji: '🎓',
-    color: '#7FD6A8',
-    specialty: 'First-Gen Support',
-    bio: "First in my family to go to college. I know the struggle of figuring it all out alone.",
-    status: 'available',
-    sessionsCompleted: 91,
-  },
-  {
-    id: 'v5',
     name: 'Morgan',
     emoji: '💛',
     color: '#D67FA8',
@@ -68,6 +58,16 @@ const volunteers: Volunteer[] = [
     bio: "Heartbreak is heavy. I won't try to fix it — I'll just sit with you in it.",
     status: 'available',
     sessionsCompleted: 56,
+  },
+  {
+    id: 'v5',
+    name: 'Casey',
+    emoji: '☕',
+    color: '#7FD6A8',
+    specialty: 'Late Night Talks',
+    bio: "Can't sleep? Me neither. Let's grab a virtual coffee and just talk about whatever.",
+    status: 'available',
+    sessionsCompleted: 91,
   },
 ];
 
