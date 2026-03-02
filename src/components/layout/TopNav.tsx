@@ -2,7 +2,7 @@
 // src/components/layout/TopNav.tsx
 // Top navigation bar
 // Left: Home + Inbox + Profile
-// Center: SoftSpace logo
+// Center: SoftSpace + logo
 // Right: Search + Settings
 // =============================================
 'use client';
@@ -10,6 +10,7 @@
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Search, Settings, X, Home, Inbox } from 'lucide-react';
 
 export function TopNav() {
@@ -77,9 +78,18 @@ export function TopNav() {
               </Link>
             </div>
 
-            {/* ── Center: Logo ─────────────────────────── */}
-            <Link href="/" className="text-xl font-bold text-gray-900 tracking-tight">
-              SoftSpace
+            {/* ── Center: Logo + Name ──────────────────── */}
+            <Link href="/" className="flex items-center gap-1.5">
+              <span className="text-xl font-bold text-gray-900 tracking-tight">
+                SoftSpace
+              </span>
+              <Image
+                src="/logo.png"
+                alt="SoftSpace"
+                width={28}
+                height={28}
+                className="object-contain"
+              />
             </Link>
 
             {/* ── Right: Search + Settings ─────────────── */}
