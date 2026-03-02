@@ -1,13 +1,13 @@
 // =============================================
 // src/app/layout.tsx
-// Root layout — wraps ALL pages with TopNav + BottomNav
+// Root layout — wraps ALL pages with ClientWrapper
+// (TopNav, BottomNav, and ProfileProvider live there)
 // =============================================
 
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { TopNav } from '@/components/layout/TopNav';
-import { BottomNav } from '@/components/layout/BottomNav';
+import { ClientWrapper } from '@/components/layout/ClientWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,11 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-white`}>
-        <TopNav />
-        <main className="pb-20">
+        <ClientWrapper>
           {children}
-        </main>
-        <BottomNav />
+        </ClientWrapper>
       </body>
     </html>
   );
