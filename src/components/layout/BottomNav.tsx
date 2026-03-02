@@ -3,7 +3,7 @@
 // Footer navigation — 4 tabs
 //   1. Community
 //   2. Folder
-//   3. Live Rooms (replaces Market)
+//   3. Live Rooms
 //   4. Profile
 // =============================================
 'use client';
@@ -15,7 +15,7 @@ import { Users, FolderOpen, Mic, User } from 'lucide-react';
 const NAV_ITEMS = [
   { key: 'community',  href: '/community',   icon: Users,      label: 'Community' },
   { key: 'folder',     href: '/folder',      icon: FolderOpen,  label: 'Folder' },
-  { key: 'liverooms',  href: '/liverooms',   icon: Mic,         label: 'Live Rooms' },
+  { key: 'liverooms',  href: '/Liverooms',   icon: Mic,         label: 'Live Rooms' },
   { key: 'profile',    href: '/profile',     icon: User,        label: 'Profile' },
 ];
 

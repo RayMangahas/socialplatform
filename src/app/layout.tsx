@@ -1,7 +1,6 @@
 // =============================================
 // src/app/layout.tsx
 // Root layout — wraps ALL pages with ClientWrapper
-// (TopNav, BottomNav, and ProfileProvider live there)
 // =============================================
 
 import type { Metadata } from 'next';
@@ -12,8 +11,8 @@ import { ClientWrapper } from '@/components/layout/ClientWrapper';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Rausche',
-  description: 'You don\'t have to feel alone',
+  title: 'SoftSpace',
+  description: 'Less lonely tonight',
 };
 
 export default function RootLayout({

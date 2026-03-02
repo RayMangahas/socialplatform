@@ -1,8 +1,8 @@
 // =============================================
 // src/components/layout/TopNav.tsx
 // Top navigation bar
-// Left: Home + Profile
-// Center: Rausche logo
+// Left: Home + Inbox + Profile
+// Center: SoftSpace logo
 // Right: Search + Settings
 // =============================================
 'use client';
@@ -79,7 +79,7 @@ export function TopNav() {
 
             {/* ── Center: Logo ─────────────────────────── */}
             <Link href="/" className="text-xl font-bold text-gray-900 tracking-tight">
-              Rausche
+              SoftSpace
             </Link>
 
             {/* ── Right: Search + Settings ─────────────── */}
