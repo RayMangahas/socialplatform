@@ -1,16 +1,19 @@
-import type { Metadata } from "next";
-import TopNav from "@/components/layout/TopNav";
-import BottomNav from "@/components/layout/BottomNav";
-import { ProfileProvider } from "@/lib/ProfileContext";
-import "./globals.css";
+// =============================================
+// src/app/layout.tsx
+// Root layout — wraps ALL pages with TopNav + BottomNav
+// =============================================
+
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import { TopNav } from '@/components/layout/TopNav';
+import { BottomNav } from '@/components/layout/BottomNav';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "SoftSpace",
-  description:
-    "Where real conversations happen. Voice-first social for people who want genuine connection.",
-  icons: {
-    icon: "/favicon.ico",
-  },
+  title: 'Rausche',
+  description: 'You don\'t have to feel alone',
 };
 
 export default function RootLayout({
@@ -20,14 +23,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-body">
-        <ProfileProvider>
-          <div className="max-w-[430px] mx-auto min-h-screen flex flex-col bg-soft-lavender-bg relative">
-            <TopNav />
-            <main className="flex-1 overflow-y-auto pb-20">{children}</main>
-            <BottomNav />
-          </div>
-        </ProfileProvider>
+      <body className={`${inter.className} bg-white`}>
+        <TopNav />
+        <main className="pb-20">
+          {children}
+        </main>
+        <BottomNav />
       </body>
     </html>
   );

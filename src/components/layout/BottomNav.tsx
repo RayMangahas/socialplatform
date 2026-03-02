@@ -1,44 +1,54 @@
-"use client";
+// =============================================
+// src/components/layout/BottomNav.tsx
+// Footer navigation — 4 tabs
+//   1. Community
+//   2. Folder
+//   3. Live Rooms (replaces Market)
+//   4. Profile
+// =============================================
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import {
-  MarketplaceIcon,
-  CommunityIcon,
-  FolderIcon,
-  ProfileIcon,
-} from "@/components/icons";
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { Users, FolderOpen, Mic, User } from 'lucide-react';
 
 const NAV_ITEMS = [
-  { href: "/community", label: "Community", Icon: CommunityIcon },
-  { href: "/folder", label: "Folder", Icon: FolderIcon },
-  { href: "/marketplace", label: "Market", Icon: MarketplaceIcon },
-  { href: "/profile", label: "Profile", Icon: ProfileIcon },
+  { key: 'community',  href: '/community',   icon: Users,      label: 'Community' },
+  { key: 'folder',     href: '/folder',      icon: FolderOpen,  label: 'Folder' },
+  { key: 'liverooms',  href: '/liverooms',   icon: Mic,         label: 'Live Rooms' },
+  { key: 'profile',    href: '/profile',     icon: User,        label: 'Profile' },
 ];
 
-export default function BottomNav() {
+export function BottomNav() {
   const pathname = usePathname();
 
+  const getIsActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  };
+
   return (
-    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white border-t border-soft-lavender-border z-50">
-      <div className="flex items-center justify-around pt-2.5 pb-6">
-        {NAV_ITEMS.map(({ href, label, Icon }) => {
-          const isActive = pathname === href;
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-100">
+      <div className="max-w-[470px] mx-auto flex items-center justify-around py-1.5 pb-[calc(0.375rem+env(safe-area-inset-bottom))]">
+        {NAV_ITEMS.map((item) => {
+          const isActive = getIsActive(item.href);
           return (
             <Link
-              key={href}
-              href={href}
-              className="flex flex-col items-center gap-1 px-4 py-1 no-underline"
+              key={item.key}
+              href={item.href}
+              className={`flex flex-col items-center gap-0.5 px-3 py-1 rounded-lg transition-colors ${
+                isActive
+                  ? 'text-gray-900'
+                  : 'text-gray-400 hover:text-gray-600'
+              }`}
             >
-              <Icon active={isActive} />
-              <span
-                className={`text-[10.5px] font-body ${
-                  isActive
-                    ? "font-bold text-soft-purple"
-                    : "font-medium text-[#A0A0A8]"
-                }`}
-              >
-                {label}
+              <item.icon
+                size={24}
+                strokeWidth={isActive ? 2.2 : 1.6}
+                fill={isActive ? 'currentColor' : 'none'}
+              />
+              <span className={`text-[10px] ${isActive ? 'font-semibold' : 'font-normal'}`}>
+                {item.label}
               </span>
             </Link>
           );
