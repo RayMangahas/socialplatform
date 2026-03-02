@@ -1,8 +1,7 @@
 // =============================================
 // src/components/layout/TopNav.tsx
 // Top navigation bar
-// Left: Home + Inbox + Profile
-// Center: SoftSpace + logo
+// Left: SoftSpace + logo (home link)
 // Right: Search + Settings
 // =============================================
 'use client';
@@ -11,7 +10,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, Settings, X, Home, Inbox } from 'lucide-react';
+import { Search, Settings, X } from 'lucide-react';
 
 export function TopNav() {
   const pathname = usePathname();
@@ -48,37 +47,7 @@ export function TopNav() {
           </>
         ) : (
           <>
-            {/* ── Left: Home + Inbox + Profile ─────────── */}
-            <div className="flex items-center gap-1 min-w-[96px]">
-              <Link
-                href="/"
-                className={`p-1.5 rounded-full transition-colors ${
-                  pathname === '/'
-                    ? 'text-gray-900'
-                    : 'text-gray-400 hover:text-gray-600'
-                }`}
-              >
-                <Home size={22} strokeWidth={pathname === '/' ? 2.2 : 1.6} />
-              </Link>
-              <Link
-                href="/inbox"
-                className={`p-1.5 rounded-full transition-colors ${
-                  pathname === '/inbox'
-                    ? 'text-gray-900'
-                    : 'text-gray-400 hover:text-gray-600'
-                }`}
-              >
-                <Inbox size={22} strokeWidth={pathname === '/inbox' ? 2.2 : 1.6} />
-              </Link>
-              <Link
-                href="/profile/me"
-                className="w-7 h-7 rounded-full bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center text-white text-[11px] font-bold hover:opacity-80 transition-opacity"
-              >
-                R
-              </Link>
-            </div>
-
-            {/* ── Center: Logo + Name ──────────────────── */}
+            {/* ── Left: SoftSpace + Logo (home link) ───── */}
             <Link href="/" className="flex items-center gap-1.5">
               <span className="text-xl font-bold text-gray-900 tracking-tight">
                 SoftSpace
@@ -93,7 +62,7 @@ export function TopNav() {
             </Link>
 
             {/* ── Right: Search + Settings ─────────────── */}
-            <div className="flex items-center gap-0.5 min-w-[96px] justify-end">
+            <div className="flex items-center gap-0.5">
               <button
                 onClick={() => setShowSearch(true)}
                 className="p-1.5 hover:bg-gray-100 rounded-full transition-colors"
