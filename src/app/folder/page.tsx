@@ -21,12 +21,12 @@ interface FolderItem {
 
 // Wenqi's 3 photos (stored in public/folder/)
 const DEFAULT_ITEMS: FolderItem[] = [
-  { id: 'default-1', name: 'letter-1.jpeg', type: 'image', url: '/folder/letter-1.jpeg', size: '122 KB', addedAt: 'Today' },
-  { id: 'default-2', name: 'drawings.jpeg', type: 'image', url: '/folder/drawings.jpeg', size: '105 KB', addedAt: 'Today' },
-  { id: 'default-3', name: 'note.jpeg', type: 'image', url: '/folder/note.jpeg', size: '180 KB', addedAt: 'Today' },
+  { id: 'default-1', name: 'letter-1.jpeg', type: 'image', url: '/letter-1.jpeg', size: '122 KB', addedAt: 'Today' },
+  { id: 'default-2', name: 'drawings.jpeg', type: 'image', url: '/drawings.jpeg', size: '105 KB', addedAt: 'Today' },
+  { id: 'default-3', name: 'note.jpeg', type: 'image', url: '/note.jpeg', size: '180 KB', addedAt: 'Today' },
 ];
 
-const STORAGE_KEY = 'softspace_folder_items';
+const STORAGE_KEY = 'softspace_folder_items_v2';
 
 export default function FolderPage() {
   const [items, setItems] = useState<FolderItem[]>([]);
