@@ -76,11 +76,12 @@ export const PING_PROMPTS = [
 ];
 
 // ─── Active Rooms ────────────────────────────────────────
+// Updated: top 3 are Stress, Breakup, History
 
 export const ACTIVE_ROOMS: LiveRoom[] = [
-  { id: 1, name: "Cat Lovers Lounge", people: 7, icon: "🐱", community: "Cats" },
-  { id: 2, name: "Study Together", people: 4, icon: "📚", community: "Study Buddies" },
-  { id: 3, name: "Photo Walk Chat", people: 5, icon: "📸", community: "Photos" },
+  { id: 1, name: "Stress Relief Room", people: 7, icon: "😮‍💨", community: "Stress" },
+  { id: 2, name: "Breakup Support", people: 5, icon: "💔", community: "Breakup" },
+  { id: 3, name: "History Talk", people: 4, icon: "📜", community: "History" },
   { id: 4, name: "Late Night Chill", people: 3, icon: "🎵", community: "Music" },
 ];
 
@@ -148,6 +149,22 @@ export const COMMUNITY_POSTS: CommunityPost[] = [
       topResponses: [
         "Can't stop playing that new Tyler track",
         "Rediscovered Radiohead and now I'm in a whole phase",
+      ],
+    },
+  },
+  {
+    id: 5,
+    community: "Jokes",
+    memberCount: "2.1K",
+    icon: "😂",
+    color: "#8B6914",
+    post: {
+      prompt: "Drop your best joke 😂",
+      responseCount: 34,
+      activeNow: 9,
+      topResponses: [
+        "A man walked into his house and was delighted when he discovered that someone had stolen all of his lamps.",
+        "Check out this standup clip 😂👇",
       ],
     },
   },

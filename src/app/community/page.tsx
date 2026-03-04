@@ -28,6 +28,7 @@ const DEFAULT_COMMUNITIES: Community[] = [
   { name: "Cats", members: "5.2K", icon: "🐱", color: "#4A3070", desc: "Everything cats — pics, stories, and purrs", isOwned: false },
   { name: "Dogs", members: "4.7K", icon: "🐶", color: "#2D4A30", desc: "Good boys, good girls, good vibes", isOwned: false },
   { name: "Photos", members: "4.1K", icon: "📸", color: "#4A3040", desc: "Share what you see through your lens", isOwned: false },
+  { name: "Jokes", members: "2.1K", icon: "😂", color: "#8B6914", desc: "Laughs only — no cringe limit", isOwned: false },
 ];
 
 const ICON_OPTIONS = ["🎵", "🎮", "🏀", "🎨", "🌍", "💪", "📚", "🎬", "🍕", "🐾", "🌙", "☕", "🧠", "💬", "🎓", "✨", "🌸", "🔥", "💛", "🎧"];
@@ -55,6 +56,11 @@ function getMockPosts(communityName: string): CommunityPost[] {
     { id: 1, author: "Sam", emoji: "☕", color: "#D6A87F", text: "Golden hour at the lake today 🌅", timeAgo: "10m ago", likes: 33, liked: false },
     { id: 2, author: "Alex", emoji: "🌿", color: "#7FD6A8", text: "Amazing photography tutorial I found", link: parseLink("https://youtube.com/watch?v=dQw4w9WgXcQ") ?? undefined, timeAgo: "45m ago", likes: 15, liked: false },
     { id: 3, author: "Jordan", emoji: "🏀", color: "#7FB8D6", text: "Check this photographer's IG — insane street photos", link: parseLink("https://instagram.com/streetphoto") ?? undefined, timeAgo: "3h ago", likes: 27, liked: true },
+  ];
+  if (communityName === "Jokes") return [
+    { id: 1, author: "NightOwl99", emoji: "🌙", color: "#D6A87F", text: "A man walked into his house and was delighted when he discovered that someone had stolen all of his lamps.", timeAgo: "10m ago", likes: 42, liked: false },
+    { id: 2, author: "ComedyFan", emoji: "🎤", color: "#7FB8D6", text: "This standup clip is gold 😂", link: parseLink("https://youtube.com/watch?v=lbicNSnF7e0") ?? undefined, timeAgo: "25m ago", likes: 28, liked: true },
+    { id: 3, author: "StandupLover", emoji: "😂", color: "#D67FA8", text: "Another one that had me dying", link: parseLink("https://youtube.com/watch?v=iHuOuyWrMxg") ?? undefined, timeAgo: "1h ago", likes: 19, liked: false },
   ];
   return [
     { id: 1, author: "You", emoji: "😊", color: "#9B6BC2", text: "Welcome to this community! Share something cool.", timeAgo: "just now", likes: 0, liked: false },

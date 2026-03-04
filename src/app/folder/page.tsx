@@ -1,10 +1,12 @@
 // =============================================
 // src/app/folder/page.tsx
 // Your Folder — upload and store files, photos, videos
+// UPDATED: Default items are Wenqi's 3 photos
+// FIXED: Items persist via localStorage
 // =============================================
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 type FileType = 'image' | 'video' | 'file';
 
@@ -17,19 +19,50 @@ interface FolderItem {
   addedAt: string;
 }
 
-const mockItems: FolderItem[] = [
-  { id: '1', name: 'class-notes.pdf', type: 'file', url: '', size: '2.4 MB', addedAt: 'Today' },
-  { id: '2', name: 'study-group-selfie.jpg', type: 'image', url: '', size: '1.1 MB', addedAt: 'Today' },
-  { id: '3', name: 'campus-tour.mp4', type: 'video', url: '', size: '24.8 MB', addedAt: 'Yesterday' },
-  { id: '4', name: 'motivation-playlist.pdf', type: 'file', url: '', size: '340 KB', addedAt: 'Yesterday' },
-  { id: '5', name: 'sunset-from-dorm.jpg', type: 'image', url: '', size: '3.2 MB', addedAt: 'Mar 1' },
+// Wenqi's 3 photos (stored in public/folder/)
+const DEFAULT_ITEMS: FolderItem[] = [
+  { id: 'default-1', name: 'letter-1.jpeg', type: 'image', url: '/folder/letter-1.jpeg', size: '122 KB', addedAt: 'Today' },
+  { id: 'default-2', name: 'drawings.jpeg', type: 'image', url: '/folder/drawings.jpeg', size: '105 KB', addedAt: 'Today' },
+  { id: 'default-3', name: 'note.jpeg', type: 'image', url: '/folder/note.jpeg', size: '180 KB', addedAt: 'Today' },
 ];
 
+const STORAGE_KEY = 'softspace_folder_items';
+
 export default function FolderPage() {
-  const [items, setItems] = useState<FolderItem[]>(mockItems);
+  const [items, setItems] = useState<FolderItem[]>([]);
   const [filter, setFilter] = useState<'all' | FileType>('all');
   const [previewItem, setPreviewItem] = useState<FolderItem | null>(null);
+  const [loaded, setLoaded] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Load from localStorage on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setItems(parsed);
+          } else {
+            setItems(DEFAULT_ITEMS);
+          }
+        } catch {
+          setItems(DEFAULT_ITEMS);
+        }
+      } else {
+        setItems(DEFAULT_ITEMS);
+      }
+      setLoaded(true);
+    }
+  }, []);
+
+  // Persist to localStorage whenever items change
+  useEffect(() => {
+    if (loaded && typeof window !== 'undefined') {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    }
+  }, [items, loaded]);
 
   const filtered = filter === 'all' ? items : items.filter((i) => i.type === filter);
 
@@ -54,24 +87,27 @@ export default function FolderPage() {
     if (!files) return;
 
     Array.from(files).forEach((file) => {
-      let type: FileType = 'file';
-      if (file.type.startsWith('image/')) type = 'image';
-      else if (file.type.startsWith('video/')) type = 'video';
+      const reader = new FileReader();
+      reader.onload = () => {
+        let type: FileType = 'file';
+        if (file.type.startsWith('image/')) type = 'image';
+        else if (file.type.startsWith('video/')) type = 'video';
 
-      const url = URL.createObjectURL(file);
-      const sizeKB = file.size / 1024;
-      const size = sizeKB > 1024 ? `${(sizeKB / 1024).toFixed(1)} MB` : `${Math.round(sizeKB)} KB`;
+        const sizeKB = file.size / 1024;
+        const size = sizeKB > 1024 ? `${(sizeKB / 1024).toFixed(1)} MB` : `${Math.round(sizeKB)} KB`;
 
-      const newItem: FolderItem = {
-        id: Date.now().toString() + Math.random().toString(36).slice(2),
-        name: file.name,
-        type,
-        url,
-        size,
-        addedAt: 'Just now',
+        const newItem: FolderItem = {
+          id: Date.now().toString() + Math.random().toString(36).slice(2),
+          name: file.name,
+          type,
+          url: type === 'image' ? (reader.result as string) : URL.createObjectURL(file),
+          size,
+          addedAt: 'Just now',
+        };
+
+        setItems((prev) => [newItem, ...prev]);
       };
-
-      setItems((prev) => [newItem, ...prev]);
+      reader.readAsDataURL(file);
     });
 
     if (fileInputRef.current) fileInputRef.current.value = '';
@@ -88,6 +124,21 @@ export default function FolderPage() {
     video: items.filter((i) => i.type === 'video').length,
     file: items.filter((i) => i.type === 'file').length,
   };
+
+  // Don't render until localStorage is loaded to prevent flash
+  if (!loaded) {
+    return (
+      <div className="min-h-screen pb-24" style={{ background: '#F0ECF6' }}>
+        <div className="max-w-[470px] mx-auto px-4 py-6">
+          <div className="animate-pulse">
+            <div className="h-6 bg-white/50 rounded-lg w-40 mb-2" />
+            <div className="h-4 bg-white/50 rounded-lg w-64 mb-6" />
+            <div className="h-32 bg-white/30 rounded-[18px] mb-5" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen pb-24" style={{ background: '#F0ECF6' }}>
