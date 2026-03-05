@@ -25,10 +25,10 @@ interface CommunityPost {
 }
 
 const DEFAULT_COMMUNITIES: Community[] = [
-  { name: "Cats", members: "5.2K", icon: "🐱", color: "#4A3070", desc: "Everything cats — pics, stories, and purrs", isOwned: false },
-  { name: "Dogs", members: "4.7K", icon: "🐶", color: "#2D4A30", desc: "Good boys, good girls, good vibes", isOwned: false },
-  { name: "Photos", members: "4.1K", icon: "📸", color: "#4A3040", desc: "Share what you see through your lens", isOwned: false },
-  { name: "Jokes", members: "2.1K", icon: "😂", color: "#8B6914", desc: "Laughs only — no cringe limit", isOwned: false },
+  { name: "Cats", members: "87", icon: "🐱", color: "#4A3070", desc: "Everything cats — pics, stories, and purrs", isOwned: false },
+  { name: "Dogs", members: "64", icon: "🐶", color: "#2D4A30", desc: "Good boys, good girls, good vibes", isOwned: false },
+  { name: "Photos", members: "52", icon: "📸", color: "#4A3040", desc: "Share what you see through your lens", isOwned: false },
+  { name: "Jokes", members: "28", icon: "😂", color: "#8B6914", desc: "Laughs only — no cringe limit", isOwned: false },
 ];
 
 const ICON_OPTIONS = ["🎵", "🎮", "🏀", "🎨", "🌍", "💪", "📚", "🎬", "🍕", "🐾", "🌙", "☕", "🧠", "💬", "🎓", "✨", "🌸", "🔥", "💛", "🎧"];

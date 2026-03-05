@@ -91,13 +91,13 @@ export const COMMUNITY_POSTS: CommunityPost[] = [
   {
     id: 1,
     community: "Cats",
-    memberCount: "5.2K",
+    memberCount: "87",
     icon: "🐱",
     color: "#4A3070",
     post: {
       prompt: "Show us your cat's sleeping position right now",
-      responseCount: 64,
-      activeNow: 14,
+      responseCount: 12,
+      activeNow: 4,
       topResponses: [
         "Mine is literally sleeping on my keyboard as I type this",
         "Full loaf mode on top of the fridge 😂",
@@ -107,13 +107,13 @@ export const COMMUNITY_POSTS: CommunityPost[] = [
   {
     id: 2,
     community: "Dogs",
-    memberCount: "4.7K",
+    memberCount: "64",
     icon: "🐶",
     color: "#2D4A30",
     post: {
       prompt: "What's the weirdest thing your dog is afraid of?",
-      responseCount: 83,
-      activeNow: 11,
+      responseCount: 18,
+      activeNow: 3,
       topResponses: [
         "The Roomba. Every single time.",
         "His own reflection in the oven door 💀",
@@ -123,13 +123,13 @@ export const COMMUNITY_POSTS: CommunityPost[] = [
   {
     id: 3,
     community: "Photos",
-    memberCount: "4.1K",
+    memberCount: "52",
     icon: "📸",
     color: "#4A3040",
     post: {
       prompt: "Best photo you took this week?",
-      responseCount: 47,
-      activeNow: 8,
+      responseCount: 9,
+      activeNow: 2,
       topResponses: [
         "Golden hour at the lake — finally nailed the reflection shot",
         "Street photography downtown, the rain made everything glow",
@@ -139,13 +139,13 @@ export const COMMUNITY_POSTS: CommunityPost[] = [
   {
     id: 4,
     community: "Music",
-    memberCount: "3.8K",
+    memberCount: "41",
     icon: "🎵",
     color: "#3A2E1E",
     post: {
       prompt: "Song that's been on repeat this week?",
-      responseCount: 112,
-      activeNow: 19,
+      responseCount: 22,
+      activeNow: 5,
       topResponses: [
         "Can't stop playing that new Tyler track",
         "Rediscovered Radiohead and now I'm in a whole phase",
@@ -155,13 +155,13 @@ export const COMMUNITY_POSTS: CommunityPost[] = [
   {
     id: 5,
     community: "Jokes",
-    memberCount: "2.1K",
+    memberCount: "28",
     icon: "😂",
     color: "#8B6914",
     post: {
       prompt: "Drop your best joke 😂",
-      responseCount: 34,
-      activeNow: 9,
+      responseCount: 7,
+      activeNow: 2,
       topResponses: [
         "A man walked into his house and was delighted when he discovered that someone had stolen all of his lamps.",
         "Check out this standup clip 😂👇",
